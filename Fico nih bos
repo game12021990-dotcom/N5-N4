@@ -1,1 +1,897 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Nihongo N5–N4</title>
+
+<style>
+:root {
+    --bg: #ffffff;
+    --text: #111111;
+    --card: #f5f5f5;
+    --border: #dddddd;
+    --muted: #666666;
+}
+
+body.dark {
+    --bg: #111111;
+    --text: #ffffff;
+    --card: #1d1d1d;
+    --border: #333333;
+    --muted: #aaaaaa;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: 0.3s;
+}
+
+/* HEADER */
+
+header {
+    padding: 25px 6%;
+    border-bottom: 1px solid var(--border);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 34px;
+}
+
+header p {
+    color: var(--muted);
+}
+
+/* NAVBAR */
+
+nav {
+    display: flex;
+    gap: 10px;
+    padding: 15px 6%;
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+}
+
+button {
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+/* MAIN */
+
+main {
+    max-width: 1100px;
+    margin: auto;
+    padding: 30px 6%;
+}
+
+.page {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+/* GRID */
+
+.grid {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+}
+
+/* CARD */
+
+.card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 20px;
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+.jp {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.romaji {
+    font-size: 17px;
+}
+
+.meaning {
+    color: var(--muted);
+    margin: 8px 0 15px;
+}
+
+/* SEARCH */
+
+input {
+    width: 100%;
+    padding: 13px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+    margin: 10px 0 20px;
+    font-size: 16px;
+}
+
+/* TAG */
+
+.tag {
+    display: inline-block;
+    padding: 5px 9px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+/* HERO */
+
+.hero {
+    padding-bottom: 25px;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 35px;
+    color: var(--muted);
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    header h1 {
+        font-size: 27px;
+    }
+
+    main {
+        padding: 20px 5%;
+    }
+
+    .jp {
+        font-size: 24px;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>🇯🇵 日本語 Nihongo N5–N4</h1>
+
+<p>
+Belajar Bahasa Jepang dari dasar sampai tingkat N4
+</p>
+
+</header>
+
+
+<nav>
+
+<button class="tab active" data-page="home">
+Beranda
+</button>
+
+<button class="tab" data-page="conversation">
+🗣️ Percakapan
+</button>
+
+<button class="tab" data-page="particles">
+🔤 Partikel
+</button>
+
+<button class="tab" data-page="reading">
+🔊 Cara Baca
+</button>
+
+<button id="themeButton">
+🌙 Tema
+</button>
+
+</nav>
+
+
+<main>
+
+<!-- BERANDA -->
+
+<section id="home" class="page">
+
+<div class="hero">
+
+<h2>Belajar Bahasa Jepang N5 → N4</h2>
+
+<p>
+Website belajar bahasa Jepang untuk pemula.
+Mulai dari percakapan sehari-hari, partikel,
+cara membaca, dan pengucapan.
+</p>
+
+</div>
+
+
+<div class="grid">
+
+<div class="card">
+
+<h3>🗣️ Percakapan</h3>
+
+<p>
+Pelajari kalimat yang sering digunakan
+dalam kehidupan sehari-hari.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>🔤 Partikel</h3>
+
+<p>
+Pelajari は・が・を・に・で・へ・と・も
+dan partikel penting lainnya.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>🔊 Voice</h3>
+
+<p>
+Dengarkan pengucapan bahasa Jepang
+langsung dari browser.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- PERCAKAPAN -->
+
+<section id="conversation" class="page hidden">
+
+<h2>🗣️ Percakapan Sehari-hari</h2>
+
+<input
+type="text"
+id="searchConversation"
+placeholder="Cari percakapan..."
+>
+
+<div id="conversationList" class="grid"></div>
+
+</section>
+
+
+
+<!-- PARTIKEL -->
+
+<section id="particles" class="page hidden">
+
+<h2>🔤 Partikel N5–N4</h2>
+
+<div id="particleList" class="grid"></div>
+
+</section>
+
+
+
+<!-- READING -->
+
+<section id="reading" class="page hidden">
+
+<h2>🔊 Cara Baca + Voice</h2>
+
+<div class="card">
+
+<p>
+Masukkan kalimat bahasa Jepang:
+</p>
+
+<input
+type="text"
+id="voiceText"
+value="こんにちは。元気ですか？"
+>
+
+<button id="speakButton">
+🔊 Dengarkan
+</button>
+
+<button id="stopButton">
+⏹️ Berhenti
+</button>
+
+<p style="color:var(--muted)">
+Voice menggunakan fitur Text-to-Speech
+yang tersedia pada perangkat/browser.
+</p>
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+Nihongo N5–N4 🇯🇵  
+<br>
+Belajar sedikit setiap hari.
+
+</footer>
+
+
+
+<script>
+
+/* =========================
+   DATA PERCAKAPAN
+========================= */
+
+const conversations = [
+
+{
+jp: "おはようございます。",
+romaji: "Ohayou gozaimasu.",
+meaning: "Selamat pagi.",
+category: "Salam",
+level: "N5"
+},
+
+{
+jp: "こんにちは。",
+romaji: "Konnichiwa.",
+meaning: "Halo / selamat siang.",
+category: "Salam",
+level: "N5"
+},
+
+{
+jp: "こんばんは。",
+romaji: "Konbanwa.",
+meaning: "Selamat malam.",
+category: "Salam",
+level: "N5"
+},
+
+{
+jp: "はじめまして。",
+romaji: "Hajimemashite.",
+meaning: "Salam kenal.",
+category: "Perkenalan",
+level: "N5"
+},
+
+{
+jp: "わたしはレズキです。",
+romaji: "Watashi wa Rezky desu.",
+meaning: "Saya Rezky.",
+category: "Perkenalan",
+level: "N5"
+},
+
+{
+jp: "インドネシアから来ました。",
+romaji: "Indonesia kara kimashita.",
+meaning: "Saya datang dari Indonesia.",
+category: "Perkenalan",
+level: "N5"
+},
+
+{
+jp: "よろしくお願いします。",
+romaji: "Yoroshiku onegaishimasu.",
+meaning: "Mohon bantuannya / salam kenal.",
+category: "Perkenalan",
+level: "N5"
+},
+
+{
+jp: "ありがとうございます。",
+romaji: "Arigatou gozaimasu.",
+meaning: "Terima kasih.",
+category: "Sehari-hari",
+level: "N5"
+},
+
+{
+jp: "すみません。",
+romaji: "Sumimasen.",
+meaning: "Permisi / maaf.",
+category: "Sehari-hari",
+level: "N5"
+},
+
+{
+jp: "わかりません。",
+romaji: "Wakarimasen.",
+meaning: "Saya tidak mengerti.",
+category: "Belajar",
+level: "N5"
+},
+
+{
+jp: "もう一度お願いします。",
+romaji: "Mou ichido onegaishimasu.",
+meaning: "Tolong sekali lagi.",
+category: "Belajar",
+level: "N5"
+},
+
+{
+jp: "これはいくらですか。",
+romaji: "Kore wa ikura desu ka.",
+meaning: "Ini berapa harganya?",
+category: "Belanja",
+level: "N5"
+},
+
+{
+jp: "駅はどこですか。",
+romaji: "Eki wa doko desu ka.",
+meaning: "Stasiun di mana?",
+category: "Perjalanan",
+level: "N5"
+},
+
+{
+jp: "ちょっと待ってください。",
+romaji: "Chotto matte kudasai.",
+meaning: "Tolong tunggu sebentar.",
+category: "Permintaan",
+level: "N5"
+},
+
+{
+jp: "どうしてですか。",
+romaji: "Doushite desu ka.",
+meaning: "Mengapa?",
+category: "Percakapan",
+level: "N5"
+},
+
+{
+jp: "最近どうですか。",
+romaji: "Saikin dou desu ka.",
+meaning: "Bagaimana kabarmu akhir-akhir ini?",
+category: "Percakapan",
+level: "N4"
+},
+
+{
+jp: "今日は忙しいです。",
+romaji: "Kyou wa isogashii desu.",
+meaning: "Hari ini saya sibuk.",
+category: "Sehari-hari",
+level: "N5"
+},
+
+{
+jp: "手伝ってくれませんか。",
+romaji: "Tetsudatte kuremasen ka.",
+meaning: "Bisakah Anda membantu saya?",
+category: "Permintaan",
+level: "N4"
+}
+
+];
+
+
+
+/* =========================
+   DATA PARTIKEL
+========================= */
+
+const particles = [
+
+{
+particle: "は",
+reading: "wa",
+function: "Menandai topik.",
+example: "わたしは学生です。",
+romaji: "Watashi wa gakusei desu.",
+meaning: "Saya seorang siswa."
+},
+
+{
+particle: "が",
+reading: "ga",
+function: "Menandai subjek.",
+example: "だれが来ますか。",
+romaji: "Dare ga kimasu ka.",
+meaning: "Siapa yang datang?"
+},
+
+{
+particle: "を",
+reading: "o",
+function: "Menandai objek langsung.",
+example: "水を飲みます。",
+romaji: "Mizu o nomimasu.",
+meaning: "Saya minum air."
+},
+
+{
+particle: "に",
+reading: "ni",
+function: "Menunjukkan waktu, tujuan, atau lokasi keberadaan.",
+example: "学校に行きます。",
+romaji: "Gakkou ni ikimasu.",
+meaning: "Pergi ke sekolah."
+},
+
+{
+particle: "で",
+reading: "de",
+function: "Menunjukkan tempat berlangsungnya kegiatan.",
+example: "学校で勉強します。",
+romaji: "Gakkou de benkyou shimasu.",
+meaning: "Belajar di sekolah."
+},
+
+{
+particle: "へ",
+reading: "e",
+function: "Menunjukkan arah atau tujuan.",
+example: "日本へ行きます。",
+romaji: "Nihon e ikimasu.",
+meaning: "Pergi ke Jepang."
+},
+
+{
+particle: "と",
+reading: "to",
+function: "Dengan / dan.",
+example: "友達と話します。",
+romaji: "Tomodachi to hanashimasu.",
+meaning: "Berbicara dengan teman."
+},
+
+{
+particle: "も",
+reading: "mo",
+function: "Juga.",
+example: "私も学生です。",
+romaji: "Watashi mo gakusei desu.",
+meaning: "Saya juga siswa."
+},
+
+{
+particle: "の",
+reading: "no",
+function: "Menunjukkan kepemilikan atau hubungan.",
+example: "これは私の本です。",
+romaji: "Kore wa watashi no hon desu.",
+meaning: "Ini buku saya."
+},
+
+{
+particle: "から",
+reading: "kara",
+function: "Dari / mulai dari.",
+example: "九時からです。",
+romaji: "Kuji kara desu.",
+meaning: "Mulai dari jam sembilan."
+},
+
+{
+particle: "まで",
+reading: "made",
+function: "Sampai / batas akhir.",
+example: "五時まで働きます。",
+romaji: "Goji made hatarakimasu.",
+meaning: "Bekerja sampai jam lima."
+}
+
+];
+
+
+
+/* =========================
+   TEXT TO SPEECH
+========================= */
+
+function speakJapanese(text) {
+
+if (!("speechSynthesis" in window)) {
+
+alert(
+"Browser kamu tidak mendukung fitur voice."
+);
+
+return;
+
+}
+
+speechSynthesis.cancel();
+
+const speech =
+new SpeechSynthesisUtterance(text);
+
+speech.lang = "ja-JP";
+
+speech.rate = 0.9;
+
+speech.pitch = 1;
+
+speechSynthesis.speak(speech);
+
+}
+
+
+
+/* =========================
+   RENDER PERCAKAPAN
+========================= */
+
+function renderConversations(search = "") {
+
+const container =
+document.getElementById("conversationList");
+
+const result =
+conversations.filter(item => {
+
+const text =
+(
+item.jp +
+item.romaji +
+item.meaning +
+item.category +
+item.level
+).toLowerCase();
+
+return text.includes(search.toLowerCase());
+
+});
+
+
+container.innerHTML = result.map(item => `
+
+<div class="card">
+
+<span class="tag">
+${item.level}
+</span>
+
+<div class="jp">
+${item.jp}
+</div>
+
+<div class="romaji">
+${item.romaji}
+</div>
+
+<div class="meaning">
+${item.meaning}
+</div>
+
+<span class="tag">
+${item.category}
+</span>
+
+<br><br>
+
+<button
+onclick='speakJapanese(${JSON.stringify(item.jp)})'
+>
+🔊 Dengarkan
+</button>
+
+</div>
+
+`).join("");
+
+}
+
+
+
+/* =========================
+   RENDER PARTIKEL
+========================= */
+
+function renderParticles() {
+
+const container =
+document.getElementById("particleList");
+
+container.innerHTML =
+particles.map(item => `
+
+<div class="card">
+
+<div class="jp">
+${item.particle}
+</div>
+
+<div class="romaji">
+${item.reading}
+</div>
+
+<p>
+<b>Fungsi:</b><br>
+${item.function}
+</p>
+
+<hr>
+
+<div class="jp">
+${item.example}
+</div>
+
+<div class="romaji">
+${item.romaji}
+</div>
+
+<div class="meaning">
+${item.meaning}
+</div>
+
+<button
+onclick='speakJapanese(${JSON.stringify(item.example)})'
+>
+🔊 Dengarkan
+</button>
+
+</div>
+
+`).join("");
+
+}
+
+
+
+/* =========================
+   NAVIGASI
+========================= */
+
+document
+.querySelectorAll(".tab")
+.forEach(button => {
+
+button.addEventListener("click", () => {
+
+document
+.querySelectorAll(".tab")
+.forEach(btn =>
+btn.classList.remove("active")
+);
+
+button.classList.add("active");
+
+document
+.querySelectorAll(".page")
+.forEach(page =>
+page.classList.add("hidden")
+);
+
+const page =
+document.getElementById(
+button.dataset.page
+);
+
+if (page) {
+page.classList.remove("hidden");
+}
+
+});
+
+});
+
+
+
+/* =========================
+   DARK MODE
+========================= */
+
+document
+.getElementById("themeButton")
+.addEventListener("click", () => {
+
+document.body.classList.toggle("dark");
+
+});
+
+
+
+/* =========================
+   SEARCH
+========================= */
+
+document
+.getElementById("searchConversation")
+.addEventListener(
+"input",
+event => {
+
+renderConversations(
+event.target.value
+);
+
+}
+);
+
+
+
+/* =========================
+   VOICE MANUAL
+========================= */
+
+document
+.getElementById("speakButton")
+.addEventListener("click", () => {
+
+const text =
+document.getElementById(
+"voiceText"
+).value;
+
+speakJapanese(text);
+
+});
+
+
+document
+.getElementById("stopButton")
+.addEventListener("click", () => {
+
+speechSynthesis.cancel();
+
+});
+
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+renderConversations();
+
+renderParticles();
+
+</script>
+
+</body>
+</html>
